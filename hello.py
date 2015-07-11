@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request
 from flask import make_response
+from flask import redirect
 
 app = Flask(__name__)
 
@@ -15,6 +16,11 @@ def index():
 @app.route("/user/<name>")
 def user(name):
     return '<h1>hello, %s!</h1>' % name
+
+@app.route("/redi")
+def redi():
+    return redirect('http://jwss.cc')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
