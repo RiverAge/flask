@@ -40,7 +40,13 @@ def internal_server_error(e):
 def page_not_found(e):
     return render_template('404.html'), 404
 
+@app.route('/projects/')
+def projects():
+    return 'The project page'
 
+@app.route('/about')
+def about():
+    return 'the about page'
 
 if __name__ == '__main__':
 #    app.run()
