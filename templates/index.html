@@ -1,7 +1,15 @@
-{% extends "base.html" %} {% block title%} Flasky - index {% endblock %} {% block page_content%}
-<div class="page-header">
-    <p>The server data and time is {{current_time}}</p>
-    <p>The local date and time is {{moment(current_time).format('LLL')}}</p>
-    <p>That was {{moment(current_time).fromNow(refresh=true)}}</p>
+{% extends "base.html" %}{% import "bootstrap/wtf.html" as wtf %} {% block title%} Flasky - index {% endblock %}{% block content %}
+<div class="container">{% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button> {{message}} </div> {% endfor %}{% block page_content%}
+
+    <div class="page-header">
+        <p>The server data and time is {{current_time}}</p>
+        <p>The local date and time is {{moment(current_time).format('LLL')}}</p>
+        <p>That was {{moment(current_time).fromNow(refresh=true)}}</p>
+        <p>Hell0o, {% if name %}{{name}}{% else %}Stranger{% endif %}!</p>
+        {{ wtf.quick_form(form) }}
+    </div>
 </div>
-{% endblock %}
+
+{% endblock %} {% endblock %}
